@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/Dropdown.scss";
 
 const Dropdown = ({ data, title }) => {
@@ -16,11 +17,12 @@ const Dropdown = ({ data, title }) => {
         <div className="dropdown">
             <div className="dropdown-header" onClick={toggleDropdown}>
                 {selectedItem
-                    ? items.find((item) => item.id === selectedItem).label
+                    ? items.find((item) => item.id == selectedItem).label
                     : title}
-                <i
+                <FontAwesomeIcon
                     className={`fa fa-chevron-right icon ${isOpen && "open"}`}
-                ></i>
+                    icon="fas-chevron-right"
+                />
             </div>
             <div className={`dropdown-body ${isOpen && "open"}`}>
                 {items.map((item, index) => (
@@ -32,7 +34,7 @@ const Dropdown = ({ data, title }) => {
                     >
                         <span
                             className={`dropdown-item-dot ${
-                                item.id === selectedItem && "selected"
+                                item.id == selectedItem && "selected"
                             }`}
                         >
                             •{" "}
